@@ -2,7 +2,7 @@ import NewNote, {links as NewNoteStyle} from "~/components/NewNote"
 import NoteList, {links as NoteListLinks} from "~/components/NoteList";
 import { getStoredNotes, storeNotes } from "~/data/data";
 import { redirect } from "@remix-run/node";
-import { useActionData, useLoaderData } from "@remix-run/react";
+import { Link, useActionData, useLoaderData } from "@remix-run/react";
 
 
 export default function notesPage(){
@@ -44,3 +44,15 @@ export async function action({request} : any){
 export function links () {
     return [...NewNoteStyle(), ...NoteListLinks()];
   }
+
+export function ErrorBoundary({error} : any){
+    return(
+        <main className="error">
+            <h1>An Error related to your notes occured!</h1>
+            <p>{error.message}</p>
+            <p>
+                Back to <Link to={"/"}>safety</Link>
+            </p>
+        </main>
+    )
+}

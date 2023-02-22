@@ -34,4 +34,4 @@ export default NewNote
 
 export function links () {
     return [{rel : 'StyleSheet', href : styles}];
-  }
+}
